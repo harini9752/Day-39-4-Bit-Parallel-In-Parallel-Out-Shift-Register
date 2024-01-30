@@ -1,0 +1,11 @@
+module four_bit_pipo_shift_register (
+  input wire [3:0] parallel_input,
+  input wire shift,
+  output reg [3:0] parallel_output
+);
+
+  always @(posedge shift) begin
+    parallel_output <= (shift) ? {parallel_input[2:0], 1'b0} : parallel_output;
+  end
+
+endmodule
