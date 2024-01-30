@@ -1,0 +1,28 @@
+module tb_four_bit_pipo_shift_register;
+
+  reg [3:0] parallel_input;
+  reg shift;
+  wire [3:0] parallel_output;
+
+  four_bit_pipo_shift_register uut (
+    .parallel_input(parallel_input),
+    .shift(shift),
+    .parallel_output(parallel_output)
+  );
+
+  initial begin
+    // Test 1: Load data in parallel
+    parallel_input = 4'b1101;
+    shift = 0;
+    #10 $display("Time=%0t ParallelInput=%b Shift=%b ParallelOutput=%b", $time, parallel_input, shift, parallel_output);
+
+    // Test 2: Shift data
+    shift = 1;
+    #10 $display("Time=%0t ParallelInput=%b Shift=%b ParallelOutput=%b", $time, parallel_input, shift, parallel_output);
+
+    // Add more test cases as needed
+
+    $finish;
+  end
+
+endmodule
